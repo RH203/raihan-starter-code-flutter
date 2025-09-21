@@ -13,6 +13,8 @@ import 'package:dio/dio.dart' as _i361;
 import 'package:get_it/get_it.dart' as _i174;
 import 'package:injectable/injectable.dart' as _i526;
 
+import '../../feature/auth/data/datasource/remote/auth_data_source.dart'
+    as _i964;
 import '../../feature/auth/data/repositories/auth_repositories_impl.dart'
     as _i1015;
 import '../../feature/auth/domain/repositories/auth_repositories.dart' as _i499;
@@ -30,6 +32,9 @@ extension GetItInjectableX on _i174.GetIt {
     gh.lazySingleton<_i361.Dio>(() => injectableModules.dio);
     gh.lazySingleton<_i499.AuthRepositories>(
       () => _i1015.AuthRepositoriesImpl(),
+    );
+    gh.lazySingleton<_i964.AuthDataSource>(
+      () => _i964.AuthDataSource(gh<_i361.Dio>()),
     );
     gh.factory<_i460.LoginUsecase>(
       () => _i460.LoginUsecase(gh<_i499.AuthRepositories>()),

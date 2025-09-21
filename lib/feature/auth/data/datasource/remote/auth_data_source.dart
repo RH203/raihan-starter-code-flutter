@@ -1,7 +1,9 @@
 import 'package:dio/dio.dart';
+import 'package:injectable/injectable.dart';
 import 'package:my_schedule/app_bloc.dart';
 import 'package:my_schedule/feature/auth/data/model/user_model.dart';
 
+@lazySingleton
 class AuthDataSource {
   final Dio dio;
 
@@ -10,8 +12,8 @@ class AuthDataSource {
   Future<UserModel> login(String email, String password) async {
     try {
       final response = await dio.post(
-        '/auth/api/login',
-        data: {'email': email, 'password': password},
+        '/login',
+        data: {'login': email, 'password': password},
         options: Options(headers: {'Content-Type': 'application/json'}),
       );
 
