@@ -16,6 +16,7 @@ dependencies:
   dio:
   equatable:
   flutter_bloc:
+  get_it:
   go_router:
   injectable:
   logger:
